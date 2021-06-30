@@ -1,0 +1,77 @@
+/* 
+SELECT * FROM department
+
+SELECT * FROM employee
+*/
+/* 
+SELECT DNO , AVG(salary)AS AVGSAL, MAX(salary)as MAXSAL
+FROM employee
+GROUP BY dno
+HAVING AVG(salary) >= 2500000;
+*/
+/* 
+(
+    SELECT DNO
+    FROM EMPLOYEE
+    WHERE EMPNAME = '±èÃ¢¼·'
+)
+UNION
+(
+    SELECT DEPTNO
+    FROM DEPARTMENT
+    WHERE DEPTNAME = '°³¹ß'
+)
+*/
+/* 
+SELECT DNO
+FROM EMPLOYEE
+WHERE EMPNAME = '±èÃ¢¼·'
+
+    and dno not in
+(
+    SELECT DEPTNO
+    FROM DEPARTMENT
+    WHERE DEPTNAME = '°³¹ß'
+)
+*/
+/* 
+SELECT dno
+FROM employee, department
+WHERE dno=deptno and empname='±èÃ¢¼·'
+*/
+/* 
+SELECT empname, deptname
+FROM employee as E, department as D
+WHERE E.dno = D.deptno
+*/
+/* 
+select empname, title
+FROM employee
+WHERE title = 
+(
+    SELECT title
+FROM employee
+WHERE empname = '¹Ú¿µ±Ç'
+)
+*/
+/* 
+SELECT empname
+FROM employee E
+WHERE EXISTS (SELECT *
+FROM department D
+WHERE E.dno = D.deptno AND ( deptname = '¿µ¾÷' OR deptname = '°³¹ß'))
+*/
+/* 
+SELECT empname, dno, salary
+FROM employee E
+WHERE 	salary > (SELECT AVG(salary)
+FROM employee
+WHERE dno = e.dno)
+/* 
+INSERT INTO HIGH_SALARY
+    (ENAME, TITLE, SAL)--ÀÌ¹Ì »ý¼ºµÈ°ÍÀ¸·Î °¡Á¤
+SELECT empname, title , salary
+FROM employee
+WHERE salary >= 3000000; 
+*/
+-- Delete rows from table 'department'

@@ -3,7 +3,7 @@ create table department (
     deptname char(10),
     floor int,
     primary key (deptno)
-) engine = innodb;
+);
 
 insert into
     department
